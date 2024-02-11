@@ -36,7 +36,7 @@
             <h3>Скачать файл:</h3>
             <ul>
                 <!-- Вывод списка файлов с возможностью скачивания -->
-                @foreach(Storage::files('public_html/documents/'.$project->id) as $file)
+                @foreach(Storage::files('public/documents/'.$project->id) as $file)
                     <li><a href="{{route('projects.documents.download', [$project->id, basename($file)])}}">{{ basename($file) }}</a>
                     </li>
                 @endforeach

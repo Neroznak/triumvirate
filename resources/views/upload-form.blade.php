@@ -23,7 +23,7 @@
 <h3>Скачать файл:</h3>
 <ul>
     <!-- Вывод списка файлов с возможностью скачивания -->
-    @foreach(Storage::files('public_html') as $file)
+    @foreach(Storage::files('public') as $file)
         <li><a href="{{ url('/download-file/' . basename($file)) }}">{{ basename($file) }}</a></li>
     @endforeach
 </ul>

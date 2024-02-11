@@ -13,7 +13,7 @@ class Project extends Model
 
 
 
-//    public_html mixed $id;
+//    public mixed $id;
     protected $table = 'projects';
     protected $guarded = false;
     protected $fillable = [
