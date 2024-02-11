@@ -23,15 +23,15 @@ class DocController extends Controller
         $file = $request->file('file');
         $filename = $file->getClientOriginalName();
 
-        // Сохранение файла в хранилище (storage/app/public)
-        $file->storeAs('public/documents/'.$project->id, $filename);
+        // Сохранение файла в хранилище (storage/app/public_html)
+        $file->storeAs('public_html/documents/'.$project->id, $filename);
 
         return redirect()->route('projects.documents.index', $project->id)->with('success', 'Файл успешно загружен.');
     }
 
     public function downloadFile($project, $filename)
     {
-        $path = storage_path('app/public/documents/'.$project.'/'.$filename);
+        $path = storage_path('app/public_html/documents/'.$project.'/'.$filename);
 
         if (file_exists($path)) {
             return response()->download($path, $filename);
@@ -42,7 +42,7 @@ class DocController extends Controller
 
     public function deleteFile($filename, Project $project)
     {
-        $path = storage_path('app/public/' . $filename);
+        $path = storage_path('app/public_html/' . $filename);
 
         if (file_exists($path)) {
             unlink($path); // Удаление файла
