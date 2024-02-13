@@ -8,28 +8,25 @@
                         <div class="row">
                             <h1>Задачи</h1>
                             <a href="{{ route('tasks.create', ) }}" class="btn btn-success ml-2">Добавить</a>
-                                <div class="ml-5">
-                            <form action="{{ route('tasks.filter.index') }}" method="GET">
-                                <select name="performer">
-                                    <option value="">Все сотрудники</option>
-                                    @foreach($users as $user)
-                                        <option
-                                            value="{{ $user->id }}" {{ request('performer') == $user->id ? 'selected' : '' }}>
-                                            {{ $user->surname.' '.mb_substr($user->name, 0, 1).'.'.mb_substr($user->patronymic, 0, 1).'.' }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" class="btn btn-info">Применить фильтр</button>
-                            </form>
-                                </div>
-
-                            {{--                            <a href="{{ route('tasks.archieve') }}" class="btn btn-primary ml-2">Архив</a>--}}
+                            <div class="ml-5">
+                                <form action="{{ route('tasks.filter.index') }}" method="GET">
+                                    <select name="performer">
+                                        <option value="">Все сотрудники</option>
+                                        @foreach($users as $user)
+                                            <option
+                                                value="{{ $user->id }}" {{ request('performer') == $user->id ? 'selected' : '' }}>
+                                                {{ $user->surname.' '.mb_substr($user->name, 0, 1).'.'.mb_substr($user->patronymic, 0, 1).'.' }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="btn btn-info">Применить фильтр</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
 
 
         <section class="content pb-3">
@@ -64,8 +61,6 @@
                                                         style="font-size:12px; color:gray">
                                                          @if(is_numeric($task->project_id))
                                                             {{'Проект: '.$projects->where('id', $task->project_id)->firstOrFail()['title'] ?? null }}
-
-
 
                                                         @endif
                                                     </span>
@@ -107,7 +102,6 @@
                                                         style="font-size:12px; color:gray">
                                                         @if(is_numeric($task->project_id))
                                                             {{'Проект: '.$projects->where('id', $task->project_id)->firstOrFail()['title'] ?? null }}
-
 
                                                         @endif
                                                     </span>

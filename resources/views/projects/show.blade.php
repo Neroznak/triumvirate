@@ -95,10 +95,10 @@
                         <canvas id="myPieChart" width="100" height="100"></canvas>
                         <script>
                             var data = {
-                                labels: ['Материалы', 'Работа', 'Прибыль'],
+                                labels: ['Расходы', 'Прибыль'],
                                 datasets: [{
-                                    data: [{{$project->income}}, 30, 20], // Проценты или значения для каждой категории
-                                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Цвета секторов диаграммы
+                                    data: [{{$project->expense}}, {{$project->income-$project->expense}}], // Проценты или значения для каждой категории
+                                    backgroundColor: ['#dc3545', '#28a745'], // Цвета секторов диаграммы
                                 }]
                             };
                             var ctx = document.getElementById('myPieChart').getContext('2d');
