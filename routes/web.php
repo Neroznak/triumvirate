@@ -90,6 +90,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Project', 'prefix'=>'projects']
     Route::get('/{project}/executions', 'ExecuteController')->name('projects.execute');
     Route::get('/{project}/edit', 'EditController')->name('projects.edit');
     Route::patch('/{project}', 'UpdateController')->name('projects.update');
+    Route::patch('/{project}/expense', 'UpdateExpenseController')->name('projects.update.expense');
     Route::delete('/{project}', 'DestroyController')->name('projects.destroy');
 });
 

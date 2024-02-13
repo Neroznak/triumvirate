@@ -71,10 +71,6 @@
                                             <td>{{$work->comment}}</td>
                                             <td>
                                                 <div class="row">
-                                                    {{--                                                    <button class="btn btn-primary">--}}
-                                                    {{--                                                        <a class='text-white'--}}
-                                                    {{--                                                           href="{{ route('$project.works.show',$user->id) }}">Смотреть</a>--}}
-                                                    {{--                                                    </button>--}}
                                                     <button class="btn btn-primary ml-2">
                                                         <a class='text-white'
                                                            href="{{ route('projects.works.edit',[$project->id, $work->id]) }}"><i
@@ -102,75 +98,28 @@
                                     <th>Итого расходов</th>
                                     <td>{{$total_super}}</td>
                                     <td></td>
-                                    <td></td>
-
+                                    <td>                            <form action="{{ route('projects.update.expense', $project->id) }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('patch')
+                                            <div class="card-body">
+                                                <div style="display:none" class="form-group">
+                                                    <input type="text" id='name' name='expense' class="form-control"
+                                                           value="{{$total_super}}">
+                                                    @error('expense')
+                                                    <div class="text-danger">{{$message}}</div>
+                                                    @enderror
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {{--                    <div class="card mt-3 ml-0 col-6">--}}
-                    {{--                        <div class="card-body table-responsive p-0 mt-6">--}}
-                    {{--                            <div class="row">--}}
-                    {{--                                <h4 class="ml-2">Расход</h4>--}}
-                    {{--                                <a href="{{ route('projects.works.create', $project->id) }}"--}}
-                    {{--                                   class="btn btn-primary ml-2">Учесть расход</a>--}}
-                    {{--                            </div>--}}
-                    {{--                            <table class="table table-hover text-nowrap">--}}
-                    {{--                                <thead>--}}
-                    {{--                                <tr>--}}
-                    {{--                                    <th>Номер</th>--}}
-                    {{--                                    <th>Наименование траты</th>--}}
-                    {{--                                    <th>Ед.изм</th>--}}
-                    {{--                                    <th>Кол-во</th>--}}
-                    {{--                                    <th>Цена за ед.</th>--}}
-                    {{--                                    <th>Стоимость</th>--}}
-                    {{--                                    <th>Действия</th>--}}
-                    {{--                                </tr>--}}
-                    {{--                                </thead>--}}
-                    {{--                                <tbody>--}}
-                    {{--                                @foreach($works as $work)--}}
-                    {{--                                    @if($work->project_id === $project->id)--}}
-                    {{--                                        <tr>--}}
-                    {{--                                            <div style="display: none">--}}
-                    {{--                                                {{ $id = 1 }}--}}
-                    {{--                                            </div>--}}
-                    {{--                                            <td>{{$id}}</td>--}}
-                    {{--                                            <div style="display: none">--}}
-                    {{--                                                {{ $id += 1 }}--}}
-                    {{--                                            </div>--}}
-                    {{--                                            <td>{{$work->title}}</td>--}}
-                    {{--                                            <td>{{$work->measure}}</td>--}}
-                    {{--                                            <td>{{$work->amount}}</td>--}}
-                    {{--                                            <td>{{$work->cost}}</td>--}}
-                    {{--                                            <td>{{$work->total}}</td>--}}
-                    {{--                                            <td>--}}
-                    {{--                                                <div class="row">--}}
-                    {{--                                                    <button class="btn btn-primary">--}}
-                    {{--                                                        <a class='text-white'--}}
-                    {{--                                                           href="{{ route('users.show',$user->id) }}">Смотреть</a>--}}
-                    {{--                                                    </button>--}}
-                    {{--                                                    <button class="btn btn-primary ml-2">--}}
-                    {{--                                                        <a class='text-white'--}}
-                    {{--                                                           href="{{ route('users.edit',$user->id) }}">Редактировать</a>--}}
-                    {{--                                                    </button>--}}
-                    {{--                                                    <form action="{{route('users.destroy',$user->id)}}"--}}
-                    {{--                                                          method="post">--}}
-                    {{--                                                        @csrf--}}
-                    {{--                                                        @method('delete')--}}
-                    {{--                                                        <button type='submit' class="btn btn-danger ml-2">--}}
-                    {{--                                                            Удалить--}}
-                    {{--                                                        </button>--}}
-                    {{--                                                    </form>--}}
-                    {{--                                                </div>--}}
-                    {{--                                            </td>--}}
-                    {{--                                        </tr>--}}
-                    {{--                                    @endif--}}
-                    {{--                                @endforeach--}}
-                    {{--                                </tbody>--}}
-                    {{--                            </table>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
                 </div>
             </div>
         </section>
