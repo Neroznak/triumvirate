@@ -25,7 +25,7 @@
                     <div class="card-body">
                         @foreach($projects as $project)
                             @if($project->status === 'Архив')
-                                <div class="card card-success card-outline">
+                                <div class="card card-secondary card-outline">
                                     <a href="{{route('projects.show',$project->id)}}">
                                         <font color="black">
                                         <div class="card-header">
