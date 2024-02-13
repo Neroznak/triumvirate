@@ -19,7 +19,7 @@
                 <div class="card card-row card-secondary">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Проекты в архиве
+                            Архив
                         </h3>
                     </div>
                     <div class="card-body">
