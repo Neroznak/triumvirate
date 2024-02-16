@@ -20,13 +20,17 @@ use Illuminate\Support\Facades\Route;
 //    return view('home');
 //});
 
-Route::get('/post', [IndexController::class, 'index']);
+//Route::get('/post', [IndexController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/main', ['namespace'=>'App\Http\Controllers\Main\IndexController',  'middleware'=>'auth'])->name('main');
-Route::get('/companies', ['namespace'=>'App\Http\Controllers\Company\IndexController','middleware'=>'auth'] )->name('companies');
+Route::get('/companies', 'App\Http\Controllers\Company\IndexController')->name('companies');
+
+Route::group(['namespace'=>'App\Http\Controllers\Main\IndexController',  'middleware'=>'auth'],function() {
+    Route::get('/main', 'App\Http\Controllers\Main\IndexController')->name('main');
+});
+
 
 Route::group(['namespace'=>'App\Http\Controllers\Department', 'prefix'=>'departments', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('departments.index');
