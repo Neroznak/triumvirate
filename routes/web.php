@@ -25,10 +25,10 @@ Route::get('/post', [IndexController::class, 'index']);
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/main', 'App\Http\Controllers\Main\IndexController')->name('main');
-Route::get('/companies', 'App\Http\Controllers\Company\IndexController')->name('companies');
+Route::get('/main', ['namespace'=>'App\Http\Controllers\Main\IndexController',  'middleware'=>'auth'])->name('main');
+Route::get('/companies', ['namespace'=>'App\Http\Controllers\Company\IndexController','middleware'=>'auth'] )->name('companies');
 
-Route::group(['namespace'=>'App\Http\Controllers\Department', 'prefix'=>'departments'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Department', 'prefix'=>'departments', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('departments.index');
     Route::get('/create', 'CreateController')->name('departments.create');
     Route::post('/', 'StoreController')->name('departments.store');
@@ -38,7 +38,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Department', 'prefix'=>'departm
     Route::delete('/{department}', 'DestroyController')->name('departments.destroy');
 });
 
-Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('tasks.index');
     Route::get('/filter','FilterController')->name('tasks.filter.index');
     Route::get('/create', 'CreateController')->name('tasks.create');
@@ -50,7 +50,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks'],funct
 });
 
 
-Route::group(['namespace'=>'App\Http\Controllers\User', 'prefix'=>'users'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\User', 'prefix'=>'users', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('users.index');
     Route::get('/create', 'CreateController')->name('users.create');
     Route::post('/', 'StoreController')->name('users.store');
@@ -60,7 +60,7 @@ Route::group(['namespace'=>'App\Http\Controllers\User', 'prefix'=>'users'],funct
     Route::delete('/{user}', 'DestroyController')->name('users.destroy');
 });
 
-Route::group(['namespace'=>'App\Http\Controllers\Machine', 'prefix'=>'machines'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Machine', 'prefix'=>'machines', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('machines.index');
     Route::get('/create', 'CreateController')->name('machines.create');
     Route::post('/', 'StoreController')->name('machines.store');
@@ -71,7 +71,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Machine', 'prefix'=>'machines']
 });
 
 
-Route::group(['namespace'=>'App\Http\Controllers\Company', 'prefix'=>'companies'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Company', 'prefix'=>'companies', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('companies.index');
     Route::get('/create', 'CreateController')->name('companies.create');
     Route::post('/', 'StoreController')->name('companies.store');
@@ -81,7 +81,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Company', 'prefix'=>'companies'
     Route::delete('/{company}', 'DestroyController')->name('companies.destroy');
 });
 
-Route::group(['namespace'=>'App\Http\Controllers\Project', 'prefix'=>'projects'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Project', 'prefix'=>'projects', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('projects.index');
     Route::get('/archieve','ArchieveController')->name('projects.archieve');
     Route::get('/create', 'CreateController')->name('projects.create');
@@ -94,7 +94,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Project', 'prefix'=>'projects']
     Route::delete('/{project}', 'DestroyController')->name('projects.destroy');
 });
 
-Route::group(['namespace'=>'App\Http\Controllers\Project\Work', 'prefix'=>'project/{project}/works'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Project\Work', 'prefix'=>'project/{project}/works', 'middleware'=>'auth'],function() {
     Route::get('/','IndexController')->name('projects.works.index'); // должна открывать смету в целом
     Route::get('/create', 'CreateController')->name('projects.works.create'); // создает сметную позицию
     Route::post('/', 'StoreController')->name('projects.works.store'); // сохраняет сметную позицию
@@ -112,7 +112,7 @@ Route::get('/delete-file/{filename}', [DocController::class, 'deleteFile'])->nam
 
 
 
-Route::group(['namespace'=>'App\Http\Controllers\Task\Update', 'prefix'=>'tasks/{task}/updates'], function() {
+Route::group(['namespace'=>'App\Http\Controllers\Task\Update', 'prefix'=>'tasks/{task}/updates', 'middleware'=>'auth'], function() {
     Route::get('/create', 'CreateController')->name('tasks.updates.create'); // создает сметную позицию
     Route::post('/', 'StoreController')->name('tasks.updates.store'); // сохраняет сметную позицию
     Route::get('/{update}/edit', 'EditController')->name('tasks.updates.edit');
@@ -122,7 +122,7 @@ Route::group(['namespace'=>'App\Http\Controllers\Task\Update', 'prefix'=>'tasks/
 
 
 
-Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks'],function() {
+Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks', 'middleware'=>'auth'],function() {
     Route::get('/create/{project}','ProjectCreateController')->name('projects.tasks.create');
     Route::post('/store/{project}', 'ProjectStoreController')->name('projects.tasks.store');
 });
