@@ -25,7 +25,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/companies', 'App\Http\Controllers\Company\IndexController')->name('companies');
+
+Route::group(['namespace'=>'App\Http\Controllers\Company\IndexController',  'middleware'=>'auth'],function() {
+    Route::get('/companies', 'App\Http\Controllers\Company\IndexController')->name('companies');
+});
+
 
 Route::group(['namespace'=>'App\Http\Controllers\Main\IndexController',  'middleware'=>'auth'],function() {
     Route::get('/main', 'App\Http\Controllers\Main\IndexController')->name('main');
