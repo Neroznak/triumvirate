@@ -12,7 +12,7 @@ class AuthenticateMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() && !Route::is('login')) {
+        if (!Auth::check() ) {
             return redirect()->route('login'); // Здесь 'login' - имя маршрута для страницы авторизации
         }
 
