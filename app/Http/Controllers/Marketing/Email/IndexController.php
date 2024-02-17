@@ -11,6 +11,6 @@ class IndexController extends Controller
     public function __invoke() {
         $emails = Email::paginate(10);
         $users = User::all();
-        return view('marketings.emails.index', compact('emails', 'users'));
+        return view('marketings.emails.index', ['emails' => $emails], compact('emails', 'users'));
     }
 }

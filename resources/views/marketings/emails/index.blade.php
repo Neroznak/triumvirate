@@ -65,6 +65,10 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="mt-3">
+                                {{ $emails->links() }}
+                            </div>
+
                             <!-- /.card-body -->
                         </div>
                     </div>
