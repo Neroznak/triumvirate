@@ -83,7 +83,7 @@
 {{--        <strong>Copyright &copy; {{date('Y')}} <a href="https://neroznak.com">neroznak.com</a>.</strong>--}}
 {{--        Все права защищены--}}
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 1.0.0
+            <b>Version</b> 1.0.2
         </div>
     </footer>
 

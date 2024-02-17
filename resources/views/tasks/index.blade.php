@@ -4,6 +4,10 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row">
+                    <div style="display:none">
+                        {{  $cur = \Carbon\Carbon::now()}}
+
+                    </div>
                     <div class="col-sm-9">
                         <div class="row">
                             <h1>Задачи</h1>
@@ -49,9 +53,13 @@
                                                     <h5 class="card-title"
                                                         style="font-size: 16px; line-height:1; ">{{$task->title}}</h5>
 
-                                                    <div
-                                                        class="float-right mb-2">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
-
+                                                    @if($task->deadline<$cur)
+                                                        <div
+                                                            class="float-right mb-2 text-danger">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
+                                                    @else
+                                                        <div
+                                                            class="float-right mb-2 ">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
+                                                    @endif
 
                                                     <br>
                                                     <span
@@ -91,8 +99,13 @@
                                                         style="font-size: 16px; line-height:1; ">{{$task->title}}</h5>
 
                                                     <div
-                                                        class="float-right mb-2">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
-
+                                                    @if($task->deadline<$cur)
+                                                        <div
+                                                            class="float-right mb-2 text-danger">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
+                                                    @else
+                                                        <div
+                                                            class="float-right mb-2 ">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
+                                                    @endif
 
                                                     <br>
                                                     <span
@@ -129,9 +142,8 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title"
                                                         style="font-size: 16px; line-height:1; ">{{$task->title}}</h5>
-                                                    <div
-                                                        class="float-right mb-2">{{\Carbon\Carbon::parse($task->deadline)->format('d.m.Y')}}</div>
-                                                    <br>
+
+                                                                                                <br>
                                                     <span
                                                         style="font-size:12px; line-height: 0.5;  color:gray">{{'Исполнитель: '.$users[$task->performer-1]->surname.' '.mb_substr($users[$task->performer-1]->name, 0, 1).'.'.mb_substr($users[$task->performer-1]->patronymic, 0, 1).'.'}}</span>
                                                     <br>

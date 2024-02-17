@@ -81,12 +81,21 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route ('marketings.index')}}" class="nav-link">
+                        <i class="nav-icon far ion-stats-bars"></i>
+                        <p>
+                            Маркетинг
+                            {{--                            <span class="badge badge-info right">2</span>--}}
+                        </p>
+                    </a>
+                </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a href="{{route ('departments.index')}}" class="nav-link">--}}
 {{--                        <i class="nav-icon far fas fa-users"></i>--}}
 {{--                        <p>--}}
 {{--                            Отделы--}}
-{{--                            --}}{{--                            <span class="badge badge-info right">2</span>--}}
+{{--                                                        <span class="badge badge-info right">2</span>--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
@@ -95,6 +104,24 @@
 {{--                        <i class="nav-icon far fas fa-building"></i>--}}
 {{--                        <p>--}}
 {{--                            Контрагенты--}}
+{{--                            <span class="badge badge-info right">2</span>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="{{route ('companies.index')}}" class="nav-link">--}}
+{{--                        <i class="nav-icon far fas fa-building"></i>--}}
+{{--                        <p>--}}
+{{--                            Договоры--}}
+{{--                            <span class="badge badge-info right">2</span>--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a href="{{route ('companies.index')}}" class="nav-link">--}}
+{{--                        <i class="nav-icon far fas fa-building"></i>--}}
+{{--                        <p>--}}
+{{--                            Бухгалтерия--}}
 {{--                            <span class="badge badge-info right">2</span>--}}
 {{--                        </p>--}}
 {{--                    </a>--}}

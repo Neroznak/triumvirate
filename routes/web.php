@@ -135,4 +135,23 @@ Route::group(['namespace'=>'App\Http\Controllers\Task', 'prefix'=>'tasks', 'midd
     Route::post('/store/{project}', 'ProjectStoreController')->name('projects.tasks.store');
 });
 
+//
+Route::group(['namespace'=>'App\Http\Controllers\Marketing', 'prefix'=>'marketing', 'middleware'=>'auth'],function() {
+    Route::get('/','IndexController')->name('marketings.index');
+//    Route::get('/banners', 'BannersController')->name('marketings.banners');
+//    Route::get('/emails', 'IndexController')->name('marketings.emails');
+//    Route::get('/tenders', 'TendersController')->name('marketings.tenders');
+//    Route::get('/landing', 'LandingController')->name('marketings.landing');
+
+});
+
+Route::group(['namespace'=>'App\Http\Controllers\Marketing\Email', 'prefix'=>'marketing/emails', 'middleware'=>'auth'],function() {
+    Route::get('/','IndexController')->name('marketings.emails.index');
+    Route::get('/create', 'CreateController')->name('marketings.emails.create');
+    Route::post('/', 'StoreController')->name('marketings.emails.store');
+    Route::get('/{email}/edit', 'EditController')->name('marketings.emails.edit');
+    Route::patch('/{email}', 'UpdateController')->name('marketings.emails.update');
+    Route::delete('/{email}', 'DestroyController')->name('marketings.emails.destroy');
+});
+
 
