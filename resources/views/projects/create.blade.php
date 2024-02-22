@@ -65,9 +65,8 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for='name'>Срок</label>
-                                    <input type="text" id='name' name='deadline' class="form-control"
-                                           placeholder="Введите срок работы" value="{{old('deadline')}}">
+                                    <label for="dob">Cрок реализации</label>
+                                    <input type="date" id="dob" name="deadline" class="form-control" value="{{old('deadline')}}">
                                     @error('deadline')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
