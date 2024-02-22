@@ -38,7 +38,8 @@
                                         <font color="black">
                                             <div class="card-header">
                                                 <h5 class="card-title">{{$project->title}}</h5>
-                                                <br>
+                                                <div
+                                                    class="float-right mb-2 ">{{\Carbon\Carbon::parse($project->deadline)->format('d.m.Y')}}</div>                                                <br>
                                                 <div style="display: none">
                                                     @foreach($tasks as $task)
                                                         @if($task->project_id === $project->id && $task->status != "Сделано")
@@ -86,8 +87,7 @@
                                         <font color="black">
                                             <div class="card-header">
                                                 <h5 class="card-title">{{$project->title}}</h5>
-                                                <div
-                                                    class="float-right mb-2">{{number_format($project->income, 2, ',', ' ') . ' ₽'}}</div>
+                                                <div class="float-right mb-2">{{number_format($project->income, 2, ',', ' ') . ' ₽'}}</div>
                                                 <br>
                                                 <div style="display: none">
                                                     @foreach($tasks as $task)
