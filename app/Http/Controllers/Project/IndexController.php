@@ -11,7 +11,7 @@ use App\Models\User;
 class IndexController extends Controller
 {
     public function __invoke() {
-        $projects = Project::all();
+        $projects = Project::orderBy('deadline', 'asc')->get();
         $tasks = Task::all();
         return view('projects.index', compact('projects', 'tasks'));
     }
